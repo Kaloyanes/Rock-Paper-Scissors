@@ -38,71 +38,67 @@ function getRandomInt(max) {
 }  
 
 function game(playerchoice){
-    if(abletoplay){
-        abletoplay = Boolean(false);
-        console.log(situation)
-        console.log("Game started")
-        
+    abletoplay = Boolean(false);
+    console.log(situation)
+    console.log("Game started")
+
         // a random number for a random choice
-        let rnd = getRandomInt(3);
-        let AIchoice = ""; 
+    let rnd = getRandomInt(3);
+    let AIchoice = ""; 
 
-        console.log(rnd);
-        //get a random choice
-        switch(rnd){
-            case 0:
-                AIchoice = "rock";
-                break;
+    //get a random choice
+    console.log(rnd);
+    switch(rnd){
+        case 0:
+            AIchoice = "rock";
+            break;
 
-            case 1:
-                AIchoice = "scissors";
-                break;
+        case 1:
+            AIchoice = "scissors";
+            break;
             
-            case 2:
-                AIchoice = "paper";
-                break;
-        }
-
-        console.log(AIchoice)
-        // all possible situations and who wins
-        if(playerchoice === "" && AIchoice === ""){
-            drawadd();
-        }
-
-        else if(playerchoice === "rock" && AIchoice === "scissors"){
-            wins("player", "Rock", "Scissors");
-        }
-        
-        else if(playerchoice === "rock" && AIchoice === "paper"){
-            wins("AI", "Rock", "Paper")
-        }
-            
-        else if(playerchoice === "scissors" && AIchoice === "scissors"){
-            drawadd();
-        }
-            
-        else if(playerchoice === "scissors" && AIchoice === "paper"){
-            wins("player", "Scissors", "Paper");
-        }
-
-        else if(playerchoice === "scissors" && AIchoice === "rock"){
-            wins("AI", "Scissors", "Rock");
-        }
-        
-        else if(playerchoice === "paper" && AIchoice === "paper"){
-            drawadd();
-        }
-
-        else if(playerchoice === "paper" && AIchoice === "rock"){
-            wins("player", "Paper", "Rock");
-        }
-        
-        else if(playerchoice === "paper" && AIchoice === "scissors"){
-            wins("AI", "Paper", "Scissors");
-        }
+        case 2:
+            AIchoice = "paper";
+            break;
     }
-    else{
-        alert("Click Reset")
+
+    console.log(AIchoice)
+    console.log(playerchoice)
+    // all possible situations and who wins
+    if(playerchoice === "" && AIchoice === ""){
+        drawadd();
+    }
+
+    else if(playerchoice === "rock" && AIchoice === "scissors"){
+        wins("player", "Rock", "Scissors");
+    }
+        
+    else if(playerchoice === "rock" && AIchoice === "paper"){
+        wins("AI", "Rock", "Paper")
+    }
+            
+    else if(playerchoice === "scissors" && AIchoice === "scissors"){
+        drawadd();
+    }
+            
+    else if(playerchoice === "scissors" && AIchoice === "paper"){
+        wins("player", "Scissors", "Paper");
+    }
+
+    else if(playerchoice === "scissors" && AIchoice === "rock"){
+        wins("AI", "Scissors", "Rock");
+    }
+        
+    else if(playerchoice === "paper" && AIchoice === "paper"){
+        drawadd();
+    }
+
+    else if(playerchoice === "paper" && AIchoice === "rock"){
+        wins("player", "Paper", "Rock");
+    }
+        
+    else if(playerchoice === "paper" && AIchoice === "scissors"){
+        wins("AI", "Paper", "Scissors");
     }
 }
 
@@ -114,6 +110,7 @@ function drawadd(){
     winlosemessage.innerText = draw;
     situation.innerText = "";
     bottom.style.display = 'block';
+    setTimeout(reset(), 5000);
 }
 
 function wins(who, winmove, losemove){
@@ -124,6 +121,7 @@ function wins(who, winmove, losemove){
         winlosemessage.innerText = win;
         situation.innerText = winmove + " beats " + losemove;
     }
+    
     else{
         aiwins++;
         console.log("AI wins!")
@@ -132,6 +130,10 @@ function wins(who, winmove, losemove){
         situation.innerText = winmove + " beats " + losemove;
     }
     bottom.style.display = 'block';
+    console.log("WINNER HAS BEEN DECIDED")
+    setTimeout(function() {
+        reset();
+    }, 30000);
 }
 
 function reset(){
@@ -140,10 +142,6 @@ function reset(){
     playerchoice = "";
     AIchoice = "";
     console.clear();
+    console.log("resseted")
+    setTimeout(console.log("FFFF"), 2000)
 }
-
-// // add an event listener that starts the game
-// rock.addEventListener('click', game("rock"));
-// paper.addEventListener('click', game("paper"));
-// scissors.addEventListener('click', game("scissors"));
-// resetbutton.addEventListener('click', reset());
