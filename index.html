@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/style.css">
+        <title>Rock Paper Scissors</title>
+</head>
+<body>
+        <div class="header">
+            <h1>Rock Paper Scissors</h1>
+            <h1 id="textchoose">Choose one</h1>
+        </div>
+        <div class="choices">
+            <div class="rock" onclick="game('rock')">
+                <img src="src/rock.png" id="rock"><br>
+                <label for="rock">Rock</label>
+            </div>
+            <div class="paper" onclick="game('paper')">
+                <img src="src/paper.png" id="paper"><br>
+                <label for="paper">Paper</label>
+            </div>
+            <div class="scissors" onclick="game('scissors')">
+                <img src="src/scissors.png" id='scissors'><br>
+                <label for="scissors">Scissors</label>
+            </div>
+        </div>
+        <div class="result">
+            <h1 id="youres">You: 0</h1>
+            <h1 id="aires">AI: 0</h1>
+            <h1 id="drawres">Draw: 0</h1>
+        </div>
+        <div class="bottom">
+            <div class="aftergame">
+                <div class="winlose">
+                    <h1 class="leftslide" id="aftergameResult">You won!🎉</h1>
+                    <h1 class="rightslide" id="situation">Paper beats Rock</h1>
+                </div>
+            </div>
+            <div class="reset">
+                <button id="resetbutton" onclick="reset()">Reset</button>
+            </div>
+        </div>
+</body>
+<script src="js/index.js"></script>
+</html>
