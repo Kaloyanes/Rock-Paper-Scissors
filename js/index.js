@@ -1,5 +1,3 @@
-let abletoplay = Boolean(true);
-
 // all choices
 const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
@@ -30,15 +28,14 @@ let playerwins = 0;
 let aiwins = 0;
 let draws = 0;
 
-let winmove = "";
-let losemove = "";
+let winmove;
+let losemove;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }  
 
 function game(playerchoice){
-    abletoplay = Boolean(false);
     console.log(situation)
     console.log("Game started")
 
@@ -110,7 +107,6 @@ function drawadd(){
     winlosemessage.innerText = draw;
     situation.innerText = "";
     bottom.style.display = 'block';
-    setTimeout(reset(), 5000);
 }
 
 function wins(who, winmove, losemove){
@@ -121,7 +117,7 @@ function wins(who, winmove, losemove){
         winlosemessage.innerText = win;
         situation.innerText = winmove + " beats " + losemove;
     }
-    
+
     else{
         aiwins++;
         console.log("AI wins!")
@@ -131,17 +127,4 @@ function wins(who, winmove, losemove){
     }
     bottom.style.display = 'block';
     console.log("WINNER HAS BEEN DECIDED")
-    setTimeout(function() {
-        reset();
-    }, 30000);
-}
-
-function reset(){
-    bottom.style.display = 'none';
-    abletoplay = Boolean(true);
-    playerchoice = "";
-    AIchoice = "";
-    console.clear();
-    console.log("resseted")
-    setTimeout(console.log("FFFF"), 2000)
 }
